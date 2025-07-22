@@ -1,0 +1,19 @@
+@font-face {
+    font-family: 'Monogram';
+    src: url("../fonts/monogram.ttf");
+}
+.root {
+   -fx-font-family: "Monogram";
+     -fx-font-smoothing-type: gray;
+}
+
+.textMax {
+    -fx-font-size: 32px;
+}
+.outline-text{
+    -fx-fill: red;
+    -fx-stroke: #f1f1f1;
+    -fx-stroke-type: outside;
+    -fx-stroke-width: 0px;
+
+}
