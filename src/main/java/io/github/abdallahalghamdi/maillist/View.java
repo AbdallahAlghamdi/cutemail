@@ -3,6 +3,7 @@ package io.github.abdallahalghamdi.maillist;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.FontSmoothingType;
@@ -13,23 +14,25 @@ public class View implements Builder<Region> {
     @Override
     public Region build() {
 
-        VBox root = new VBox(getAppbar());
-        root.getStyleClass().add("red");
+        VBox root = new VBox(getAppbar(),getMailList());
         return root;
     }
+    private Node getMailList(){
+        VBox body = new VBox();
+        body.getStyleClass().add("primary-outline");
+        VBox.setVgrow(body, Priority.ALWAYS);
 
+        return body;
+    }
     private Node getAppbar(){
         HBox hbox = new HBox();
+
         Text appbarTitle = new Text("CuteMail");
-        appbarTitle.getStyleClass().addAll("textMax", "outline-text");
+        appbarTitle.getStyleClass().addAll("textMax", "textPrimary");
         appbarTitle.setSmooth(false);
-        appbarTitle.setEffect(null);
-        appbarTitle.setFontSmoothingType(FontSmoothingType.GRAY);
-
-
 
         hbox.getChildren().add(appbarTitle);
-//        hbox.getStyleClass().add("appbar");
+        hbox.getStyleClass().add("appbar");
         return hbox;
     }
 }
