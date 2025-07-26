@@ -1,25 +1,26 @@
 package io.github.abdallahalghamdi.maillist;
 
 import io.github.abdallahalghamdi.maillist.ui.MailRow;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
-import java.util.ArrayList;
 
 public class Model {
-    private ArrayList<MailRow> mailRows;
+    private final ObservableList<MailRow> mailInbox;
     public Model(){
-
+        mailInbox = FXCollections.observableArrayList();
+        setDefault();
     }
     public void setDefault(){
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-        mailRows.add(new MailRow("Dad", "About Chaud", false, true));
-    }
+        mailInbox.add(new MailRow("Dad", "About Chaud", false, false));
+        mailInbox.add(new MailRow("Ronny", "How are you?", false, false));
+        mailInbox.add(new MailRow("Ronny", "How are you?", true, false));
+        mailInbox.add(new MailRow("Ronny", "How are you?", false, false));
+        mailInbox.add(new MailRow("Ronny", "How are you?", false, false));
 
+
+    }
+    public ObservableList<MailRow> getMailInbox(){
+        return mailInbox;
+    }
 }

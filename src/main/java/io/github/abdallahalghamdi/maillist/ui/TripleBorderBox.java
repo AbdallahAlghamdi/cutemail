@@ -5,20 +5,21 @@ import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
 
 public class TripleBorderBox extends VBox {
-    public TripleBorderBox(Region child){
+    public TripleBorderBox(Region child) {
         VBox.setVgrow(this, Priority.ALWAYS);
 
         getStyleClass().addAll("border-outline", "outline-first");
         VBox middleBox = getBorderVBox("outline-second");
         VBox inBox = getBorderVBox("outline-third");
-        if(child != null)
+        if (child != null)
             inBox.getChildren().add(child);
 
         getStyleClass().add("mailListContainer");
         middleBox.getChildren().add(inBox);
         getChildren().add(middleBox);
     }
-    private VBox getBorderVBox(String... classNames){
+
+    private VBox getBorderVBox(String... classNames) {
         VBox box = new VBox();
         box.getStyleClass().addAll(classNames);
         box.getStyleClass().addAll("border-outline");

@@ -19,10 +19,9 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         Scene scene = new Scene(new Controller().getView(), 600, 500, false, SceneAntialiasing.DISABLED);
         URL CSS_PATH = this.getClass().getResource("/css/main.css");
-        if (CSS_PATH != null) {
-            System.out.println(CSS_PATH.getPath());
+        if (CSS_PATH != null)
             scene.getStylesheets().add(CSS_PATH.toExternalForm());
-        } else
+        else
             System.out.println("NOT FOUND CSS");
         primaryStage.setScene(scene);
         primaryStage.show();

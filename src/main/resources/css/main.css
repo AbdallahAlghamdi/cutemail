@@ -17,15 +17,34 @@
     -background-MailList: "#f8f0c8";
 }
 
+.root {
+    -shadow-newBox: #a8b0a0;
+    -background-newBox-primary: #f08800;
+
+}
+
+/* .newBox {
+    -fx-background-color: -background-newBox-primary;
+    -fx-padding: 0px 5px;
+    -fx-effect: dropshadow(one-pass-box, -shadow-newBox, 0, 0, 3, 3);
+} */
+
 
 
 .mailListView {
     -fx-background-color: -background-MailList;
+    -fx-faint-focus-color: transparent;
+    -fx-background-insets: 0;
+
 }
 
+.mailListView:unfocused {
+    -fx-background-insets: 0;
+    -fx-faint-focus-color: transparent;
+}
 
 .mailListView .list-cell {
-    -fx-padding: 0px;
+    -fx-padding: 0px 36px 0px 0px;
     -fx-background-color: transparent;
     -fx-font-size: 32px;
 }
@@ -34,9 +53,12 @@
     -fx-background-color: transparent;
 }
 
+
 .mailListView .list-cell:even BorderPane {
     -fx-background-color: -background-secondary;
 }
+
+
 
 .outline-first {
     -fx-border-color: -outline-first;

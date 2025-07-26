@@ -1,15 +1,12 @@
 package io.github.abdallahalghamdi.maillist.ui;
-
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-
-import java.net.URL;
 
 public class MailRow extends HBox {
     private final SimpleBooleanProperty isNew;
@@ -17,46 +14,52 @@ public class MailRow extends HBox {
     public MailRow(String sender, String mailTitle, boolean isNew, boolean isSelect) {
         this.isNew = new SimpleBooleanProperty(isNew);
         this.isSelect = new SimpleBooleanProperty(isSelect);
+        setPrefHeight(50);
 
+        ImageView cursor = getCursorImage();
+        if (!isSelect)
+            cursor.visibleProperty().bind(this.isSelect);
+        setSpacing(5);
+        setAlignment(Pos.CENTER);
+        getChildren().addAll(cursor, getBorderPane(sender, mailTitle));
+    }
+    private BorderPane getBorderPane(String sender, String mailTitle){
         BorderPane mailRowPane = new BorderPane();
         HBox.setHgrow(mailRowPane, Priority.ALWAYS);
         Text mailTextText = new Text(mailTitle);
-        Text senderText = new Text(sender);
-        HBox leftBox = new HBox();
+        HBox rightBox = sideBox(mailTextText);
+        rightBox.setPadding(new Insets(0,10,0,0));
 
-        Text newMessage = new Text("NEW");
-        newMessage.setVisible(isNew);
-        leftBox.getChildren().addAll(newMessage, senderText);
-        leftBox.setSpacing(5);
+        Text senderText = new Text(sender);
+        HBox leftBox = sideBox();
+
+        HBox newBox = new NewIndicator();
+        newBox.visibleProperty().bind(this.isNew);
+        leftBox.getChildren().addAll(newBox, senderText);
 
         mailRowPane.setLeft(leftBox);
-        mailRowPane.setRight(mailTextText);
+        mailRowPane.setRight(rightBox);
 
-        HBox.setMargin(mailRowPane, new Insets(0, 32,0,0));
-
-
-        ImageView cursor = getCursorImage();
-        if(!isSelect)
-            cursor.setVisible(false);
-
-        getChildren().addAll(cursor,mailRowPane);
-
-
+        return mailRowPane;
     }
-    private ImageView getCursorImage(){
-        String cursorURL = getClass().getResource("/images/cursor-up.png").toExternalForm();
+    private HBox sideBox(Node... child){
+        HBox hBox = new HBox(child);
+        hBox.setAlignment(Pos.CENTER);
+        return  hBox;
+    }
+    private ImageView getCursorImage() {
+        String cursorURL = getClass().getResource("/images/cursor-right.gif").toExternalForm();
 
         Image cursorImage = new Image(cursorURL, 32, 32, true, false);
         ImageView cursor = new ImageView(cursorImage);
-        cursor.setRotate(90);
         cursor.setSmooth(false);
 
         return cursor;
     }
-    public void setIsNew(boolean isNew){
+    public void setIsNew(boolean isNew) {
         this.isNew.set(isNew);
     }
-    public void setIsSelect(boolean isSelect){
+    public void setIsSelect(boolean isSelect) {
         this.isSelect.set(isSelect);
     }
 }
