@@ -1,38 +1,36 @@
 package io.github.abdallahalghamdi.maillist;
 
-import javafx.scene.Node;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
+import io.github.abdallahalghamdi.maillist.ui.AppBar;
+import io.github.abdallahalghamdi.maillist.ui.MailRow;
+import io.github.abdallahalghamdi.maillist.ui.TripleBorderBox;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.Priority;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.FontSmoothingType;
-import javafx.scene.text.Text;
-import javafx.util.Builder;
 
-public class View implements Builder<Region> {
-    @Override
-    public Region build() {
 
-        VBox root = new VBox(getAppbar(),getMailList());
+public class View  {
+    Model model;
+    public View(Model model){
+        this.model = model;
+    }
+    public Region getView() {
+        VBox root = new VBox(AppBar.getAppBar(),getMailList());
         return root;
     }
-    private Node getMailList(){
-        VBox body = new VBox();
-        body.getStyleClass().add("primary-outline");
-        VBox.setVgrow(body, Priority.ALWAYS);
+    private Region getMailList(){
+        ListView<MailRow> list = new ListView<>();
+        list.getStyleClass().add("mailListView");
+        VBox.setVgrow(list, Priority.ALWAYS);
 
-        return body;
+        list.getItems().add(new MailRow("Dad", "About Chaud", false, true));
+        list.getItems().add(new MailRow("Dad", "About Chaud", false, false));
+        list.getItems().add(new MailRow("Dad", "About Chaud", true, false));
+        list.getItems().add(new MailRow("Dad", "About Chaud", false, false));
+        list.getItems().add(new MailRow("Dad", "About Chaud", false, false));
+
+
+        return new TripleBorderBox(list);
     }
-    private Node getAppbar(){
-        HBox hbox = new HBox();
 
-        Text appbarTitle = new Text("CuteMail");
-        appbarTitle.getStyleClass().addAll("textMax", "textPrimary");
-        appbarTitle.setSmooth(false);
-
-        hbox.getChildren().add(appbarTitle);
-        hbox.getStyleClass().add("appbar");
-        return hbox;
-    }
 }
