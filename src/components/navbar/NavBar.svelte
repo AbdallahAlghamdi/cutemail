@@ -1,10 +1,12 @@
 <script lang="ts">
-  import { getCurrentWindow } from "@tauri-apps/api/window";
-  const appWindow = getCurrentWindow();
+  // import { getCurrentWindow } from "@tauri-apps/api/window";
+  // const appWindow = getCurrentWindow();
 </script>
 
 <nav class="no-highlight" data-tauri-drag-region>
   <!-- <div data-tauri-drag-region class="tool-bar-corner pixel"></div> -->
+
+  <h1>Hello</h1>
 
   <div class="clip lt"></div>
   <div class="clip lb"></div>
@@ -13,12 +15,11 @@
 
   <div class="clip-alt left"></div>
   <div class="clip-alt right"></div>
-
   <section>
     <button on:click={appWindow.minimize}>
       <img src="/piiixl/ui/minimize_button.png" alt="close" />
     </button>
-    <button on:click={appWindow.maximize}>
+    <button on:click={appWindow.toggleMaximize}>
       <img src="/piiixl/ui/maximize_button.png" alt="maximize" />
     </button>
     <button on:click={appWindow.close}>
@@ -28,6 +29,16 @@
 </nav>
 
 <style>
+  h1 {
+    font-size: 32px;
+    font-weight: 100;
+    font-family: "IBM-VGA";
+    color: #e76a3a;
+    background-color: #30346d;
+    padding: 0px 5px;
+    margin: auto;
+    border-radius: 1px;
+  }
   img {
     width: calc(9px * 3);
     image-rendering: pixelated;
@@ -55,13 +66,14 @@
     cursor: grabbing;
   }
   nav {
+    position: relative;
     user-select: none;
     height: calc(16px * 4);
     display: flex;
+    flex-shrink: 0;
     align-items: center;
-    justify-content: end;
+    padding-left: 15px;
     padding-right: calc(3px * 6);
-    position: relative;
     clip-path: polygon(
       0 3px,
       3px 3px,
@@ -93,6 +105,8 @@
   nav section {
     display: flex;
     gap: 3px;
+    position: absolute;
+    right: calc(3px * 5);
   }
   .lt {
     left: calc(3px * 2);
