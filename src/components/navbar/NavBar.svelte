@@ -6,9 +6,6 @@
 <nav class="no-highlight" data-tauri-drag-region>
   <!-- <div data-tauri-drag-region class="tool-bar-corner pixel"></div> -->
 
-  <div class="pattern">
-    <p>Testig</p>
-  </div>
   <div class="clip lt"></div>
   <div class="clip lb"></div>
   <div class="clip rt"></div>
