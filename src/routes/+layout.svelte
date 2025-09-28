@@ -42,7 +42,7 @@
   }
   main {
     overflow: hidden;
-    padding: calc(3px * 3) calc(3px * 3) 10px 10px;
+    padding: calc(3px * 4) calc(3px * 3) 10px 10px;
     position: relative;
     flex-grow: 1;
     background-color: #e0f8cf;
@@ -126,18 +126,24 @@
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* Internet Explorer/Edge */
   }
+
   :global(button) {
     cursor: pointer;
     height: inherit;
   }
   :global(.pixel) {
-    height: calc(16px * 3);
-    width: calc(16px * 3);
-    background-size: calc(16px * 3);
+    height: calc(16px * 6);
+    width: calc(16px * 6);
     image-rendering: pixelated;
     flex-shrink: 0;
   }
-  :global(*, html, body, button) {
+  :global(.pattern) {
+    background: repeating-conic-gradient(#30346d 0 25%, #e76a3a 0 50%) 1% / 12px
+      12px;
+  }
+  :global(*, html, body) {
+    overscroll-behavior: contain;
+    border-spacing: 0px;
     list-style-type: none;
     font-family: "IBM-VGA";
     border: none;
@@ -148,6 +154,6 @@
     font-smooth: grayscale;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
-    cursor: url("/srtoasty/cursor.png"), auto;
+    cursor: url("icons/mayke_arth/cursor-01.png"), default;
   }
 </style>

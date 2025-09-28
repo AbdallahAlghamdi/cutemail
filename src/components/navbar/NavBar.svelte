@@ -1,9 +1,9 @@
 <script lang="ts">
-  // import { getCurrentWindow } from "@tauri-apps/api/window";
-  // const appWindow = getCurrentWindow();
+  import { getCurrentWindow } from "@tauri-apps/api/window";
+  const appWindow = getCurrentWindow();
 </script>
 
-<nav class="no-highlight" data-tauri-drag-region>
+<nav class="no-highlight pattern" data-tauri-drag-region>
   <!-- <div data-tauri-drag-region class="tool-bar-corner pixel"></div> -->
 
   <h1>Hello</h1>
@@ -17,13 +17,21 @@
   <div class="clip-alt right"></div>
   <section>
     <button on:click={appWindow.minimize}>
-      <img src="/piiixl/ui/minimize_button.png" alt="close" />
+      <img src="icons/piiixl/ui/minimize_button.png" alt="close" />
     </button>
     <button on:click={appWindow.toggleMaximize}>
-      <img src="/piiixl/ui/maximize_button.png" alt="maximize" />
+      {#await appWindow.isMaximized() then is_maximized}
+        {#if is_maximized}
+          {is_maximized}
+
+          <img src="icons/piiixl/ui/maximize_alt_button.png" alt="unmaximize" />
+        {:else}
+          <img src="icons/piiixl/ui/maximize_button.png" alt="maximize" />
+        {/if}
+      {/await}
     </button>
     <button on:click={appWindow.close}>
-      <img src="/piiixl/ui/close_button.png" alt="close" />
+      <img src="icons/piiixl/ui/close_button.png" alt="close" />
     </button>
   </section>
 </nav>
@@ -32,7 +40,6 @@
   h1 {
     font-size: 32px;
     font-weight: 100;
-    font-family: "IBM-VGA";
     color: #e76a3a;
     background-color: #30346d;
     padding: 0px 5px;
@@ -91,8 +98,6 @@
       0px 100%
     );
 
-    background: repeating-conic-gradient(#30346d 0 25%, #e76a3a 0 50%) 1% / 12px
-      12px;
     box-shadow:
       inset 0px 3px 0px 0px #30346d,
       inset 3px 0px 0px 0px #30346d,
