@@ -1,18 +1,77 @@
 <script lang="ts">
-  import NavBar from "../components/navbar/NavBar.svelte";
+  import { getCurrentWindow } from "@tauri-apps/api/window";
+
   let { children } = $props();
+
+  import LeftWindow from "../componets/LeftWindow.svelte";
+  import NavBanner from "../componets/NavBanner.svelte";
 </script>
 
-<div class="window">
-  <NavBar />
-  <section class="body-content">
-    <main>
-      {@render children()}
-    </main>
-  </section>
+<div class="window" data-tauri-drag-region>
+  <LeftWindow username="Garg" />
+  <main class="main_window">
+    {@render children()}
+  </main>
+  <aside class="right_window">
+    <NavBanner />
+  </aside>
 </div>
 
 <style>
+  @keyframes animated-background {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: calc(16px * 3) calc(16px * 3);
+    }
+  }
+  .background {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-image: url("/romero/heart-light-pink.png");
+    background-size: calc(16px * 3);
+    z-index: -1;
+    animation-fill-mode: forwards;
+    animation: animated-background 1s infinite linear;
+  }
+  .window {
+    height: 100vh;
+    background-position: center;
+    overflow: hidden;
+    display: flex;
+    /* border: 3px solid #a57855; */
+    background-image: url("/romero/heart-light-pink.png");
+    background-size: calc(16px * 3);
+    animation: animated-background infinite 2s linear;
+  }
+
+  .main_window {
+    padding: 13px 30px 0px 35px;
+    margin: 8px 0px;
+    flex-grow: 1;
+    /* background-color: red; */
+    border: 3px #303843 solid;
+    border-image: url("/srtoasty/book-left-open.png") 33% fill round;
+    border-style: solid;
+    border-image-slice: 16 16 16 16 fill;
+    border-image-width: 48px;
+    height: 600px;
+  }
+  .right_window {
+    height: 600px;
+    padding: 15px 36px 0px 33px;
+    display: flex;
+    flex-direction: column;
+    border-image: url("/srtoasty/book-right-open.png") 33% fill round;
+    border-style: solid;
+    border-image-slice: 16 16 16 16 fill;
+    border-image-width: 48px;
+    margin: 8px;
+    margin-left: 0px;
+  }
+
   @font-face {
     font-family: "IBM-VGA";
     src: url("/fonts/WebPlus_IBM_VGA_8x16.woff") format("woff");
@@ -20,128 +79,8 @@
     font-style: normal;
   }
 
-  main::before {
-    content: "";
-    width: 3px;
-    height: 3px;
-    background-color: #30346d;
-    position: absolute;
-    left: 3px;
-    top: 6px;
-    z-index: 10;
-  }
-  main::after {
-    content: "";
-    width: 3px;
-    height: 3px;
-    background-color: #30346d;
-    position: absolute;
-    right: 3px;
-    top: 6px;
-    z-index: 10;
-  }
-  main {
-    overflow: hidden;
-    padding: calc(3px * 4) calc(3px * 3) 10px 10px;
-    position: relative;
-    flex-grow: 1;
-    background-color: #e0f8cf;
-    box-shadow:
-      inset -3px 3px #30346d,
-      inset 3px 6px #30346d,
-      inset 0px -3px #30346d;
-    clip-path: polygon(
-      0px 3px,
-      3px 3px,
-      3px 0px,
-      calc(100% - 3px) 0px,
-      calc(100% - 3px) 3px,
-      100% 3px,
-      100% calc(100% - 3px),
-      calc(100% - 3px) calc(100% - 3px),
-      calc(100% - 3px) 100%,
-      3px 100%,
-      3px calc(100% - 3px),
-      0px calc(100% - 3px),
-      0px 0px
-    );
-  }
-  .window {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-  }
-  .body-content {
-    flex-grow: 1;
-    overflow: hidden;
-    padding: 0px calc(3px * 4) calc(3px * 4) calc(3px * 2);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #e0f8cf;
-    box-shadow:
-      inset 0px -9px 0px 0px #30346d,
-      inset 3px 0px 0px 0px #30346d,
-      inset -9px 0px 0px 0px #30346d;
-    clip-path: polygon(
-      0px 0px,
-      100% 0px,
-      100% calc(100% - 3px),
-      calc(100% - 3px) calc(100% - 3px),
-      calc(100% - 3px) 100%,
-      15px 100%,
-      15px calc(100% - 3px),
-      12px calc(100% - 3px),
-      12px calc(100% - 6px),
-      6px calc(100% - 6px),
-      6px calc(100% - 9px),
-      3px calc(100% - 9px),
-      3px calc(100% - 12px),
-      0px calc(100% - 12px)
-    );
-  }
-
-  .body-content::before {
-    content: "";
-    width: 3px;
-    height: 3px;
-    position: absolute;
-    bottom: calc(3px * 3);
-    right: 9px;
-    background-color: #30346d;
-  }
-  .body-content::after {
-    content: "";
-    width: 3px;
-    height: 3px;
-    position: absolute;
-    bottom: calc(3px * 3);
-    left: 3px;
-    background-color: #30346d;
-  }
-  :global(.no-highlight) {
-    user-select: none;
-    -webkit-user-select: none;
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-  }
-
-  :global(button) {
-    cursor: pointer;
-    height: inherit;
-  }
-  :global(.pixel) {
-    height: calc(16px * 6);
-    width: calc(16px * 6);
-    image-rendering: pixelated;
-    flex-shrink: 0;
-  }
-  :global(.pattern) {
-    background: repeating-conic-gradient(#30346d 0 25%, #e76a3a 0 50%) 1% / 12px
-      12px;
-  }
   :global(*, html, body) {
+    box-sizing: border-box;
     overscroll-behavior: contain;
     border-spacing: 0px;
     list-style-type: none;
