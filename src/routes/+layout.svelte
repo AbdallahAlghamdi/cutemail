@@ -26,16 +26,7 @@
       background-position: calc(16px * 3) calc(16px * 3);
     }
   }
-  .background {
-    position: absolute;
-    width: 200%;
-    height: 200%;
-    background-image: url("/romero/heart-light-pink.png");
-    background-size: calc(16px * 3);
-    z-index: -1;
-    animation-fill-mode: forwards;
-    animation: animated-background 1s infinite linear;
-  }
+
   .window {
     height: 100vh;
     background-position: center;

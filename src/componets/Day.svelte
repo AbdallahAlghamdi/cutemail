@@ -43,27 +43,4 @@
         height: 180px;
         border: 3px #a57855 solid;
     }
-    .day {
-        display: flex;
-        color: #503119;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 180px;
-        font-weight: 900;
-        background-image: url("icons/btl/maroon-pattern.png");
-        background-size: 128px;
-        image-rendering: pixelated;
-        border: 3px #a57855 solid;
-        /* background-color: red; */
-    }
-    .day span {
-        box-shadow:
-            inset 0px 10px rgb(202, 129, 90),
-            inset 0px -19px rgb(202, 129, 90);
-        padding: 6px;
-        border: 3px #a57855 solid;
-        background-color: #fee1b8;
-        font-size: 64px;
-    }
 </style>
