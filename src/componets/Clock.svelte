@@ -60,7 +60,7 @@
         display: flex;
         justify-content: space-evenly;
         /* box-shadow: 0px 0px 5px 0px #303843; */
-        border: 3px solid #a57855;
+        border: 2px solid #a57855;
         background-color: #fee1b8;
         font-size: 32px;
         color: #503119;

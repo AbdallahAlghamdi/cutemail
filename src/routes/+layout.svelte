@@ -1,10 +1,11 @@
 <script lang="ts">
-  import { getCurrentWindow } from "@tauri-apps/api/window";
+  // import { getCurrentWindow } from "@tauri-apps/api/window";
 
   let { children } = $props();
 
   import LeftWindow from "../componets/LeftWindow.svelte";
   import NavBanner from "../componets/NavBanner.svelte";
+  import RightWindow from "../componets/RightWindow.svelte";
 </script>
 
 <div class="window" data-tauri-drag-region>
@@ -12,9 +13,7 @@
   <main class="main_window">
     {@render children()}
   </main>
-  <aside class="right_window">
-    <NavBanner />
-  </aside>
+  <!-- <RightWindow /> -->
 </div>
 
 <style>
@@ -23,44 +22,33 @@
       background-position: 0 0;
     }
     to {
-      background-position: calc(16px * 3) calc(16px * 3);
+      background-position: calc(16px * 2) calc(16px * 2);
     }
   }
 
   .window {
+    padding: 0px 8px;
     height: 100vh;
     background-position: center;
     overflow: hidden;
     display: flex;
     /* border: 3px solid #a57855; */
     background-image: url("/romero/heart-light-pink.png");
-    background-size: calc(16px * 3);
+    background-size: calc(16px * 2);
     animation: animated-background infinite 2s linear;
   }
 
-  .main_window {
-    padding: 13px 30px 0px 35px;
+  main {
+    padding: 3px 13.5px 20px 13.5px;
     margin: 8px 0px;
     flex-grow: 1;
     /* background-color: red; */
-    border: 3px #303843 solid;
-    border-image: url("/srtoasty/book-left-open.png") 33% fill round;
+    /* border: 3px #303843 solid; */
+    border-image: url("/srtoasty/single-page-book.png");
     border-style: solid;
     border-image-slice: 16 16 16 16 fill;
-    border-image-width: 48px;
-    height: 600px;
-  }
-  .right_window {
-    height: 600px;
-    padding: 15px 36px 0px 33px;
-    display: flex;
-    flex-direction: column;
-    border-image: url("/srtoasty/book-right-open.png") 33% fill round;
-    border-style: solid;
-    border-image-slice: 16 16 16 16 fill;
-    border-image-width: 48px;
-    margin: 8px;
-    margin-left: 0px;
+    border-image-width: calc(48px / 2);
+    max-height: 600px;
   }
 
   @font-face {
@@ -72,7 +60,7 @@
 
   :global(*, html, body) {
     box-sizing: border-box;
-    overscroll-behavior: contain;
+    overscroll-behavior: none;
     border-spacing: 0px;
     list-style-type: none;
     font-family: "IBM-VGA";
@@ -85,5 +73,11 @@
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
     cursor: url("icons/mayke_arth/cursor-01.png"), default;
+  }
+  @media (width <= 900px) {
+    .main_window {
+      margin: 8px 0px;
+      border-image-source: url("/srtoasty/single-page-book.png");
+    }
   }
 </style>

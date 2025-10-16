@@ -35,12 +35,12 @@
         font-size: 32px;
         color: #503119;
         text-align: center;
-        border: 3px #a57855 solid;
+        border: 2px #a57855 solid;
         background-color: #fee1b8;
     }
     img {
         width: 180px;
         height: 180px;
-        border: 3px #a57855 solid;
+        border: 2px #a57855 solid;
     }
 </style>

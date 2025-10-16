@@ -1,26 +1,33 @@
 <nav>
-    <a href="/">
+    <a href="/inbox">
         <img src="/srtoasty/cards/letter.png" alt="inbox" />
     </a>
-    <a href="/">
+    <a href="/contacts">
         <img src="/srtoasty/cards/contact-book.png" alt="contact book" />
     </a>
-    <a href="/">
+    <a href="/news">
         <img src="/srtoasty/cards/news.png" alt="news" />
     </a>
-
-    <a href="/">
+    <a href="/notes">
         <img src="/srtoasty/cards/notes.png" alt="notes" />
     </a>
 </nav>
 
 <style>
     nav {
+        overflow: hidden;
         padding: 6px 10px 0px 10px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-bottom: 35px;
+        padding-bottom: 45px;
+        width: 100%;
+        border: 2px #a57855 solid;
+        background-color: #fee1b8;
+        border-radius: 10px;
+        box-shadow:
+            inset 0px 0px 0px 1px #e2b592,
+            inset 0px 0px 5px 5px #a57855;
     }
     a {
         transition: all 0.5s;
@@ -45,7 +52,7 @@
         left: 16px;
     }
     img {
-        width: calc(48px * 3);
+        width: calc(48px * 2);
         display: block;
         object-fit: cover;
         object-position: top;

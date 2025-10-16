@@ -1,6 +1,7 @@
 <script lang="ts">
     import Clock from "./Clock.svelte";
     import Day from "./Day.svelte";
+    import NavBanner from "./NavBanner.svelte";
     let { username }: { username: string } = $props();
 </script>
 
@@ -13,12 +14,13 @@
     <h1>
         <span>@{username}</span>
     </h1>
-    <Day />
+    <!-- <Day /> -->
+    <NavBanner />
 </aside>
 
 <style>
     img {
-        border: 3px #a57855 solid;
+        border: 2px #a57855 solid;
         height: 180px;
         width: 180px;
         object-fit: cover;
@@ -30,7 +32,7 @@
         display: flex;
         flex-direction: column;
         padding: 0px 4px;
-        border: 3px solid #a57855;
+        border: 2px solid #a57855;
         background-color: #fee1b8;
         font-size: 32px;
     }
@@ -41,5 +43,15 @@
         gap: 8px;
         width: 180px;
         margin: 8px;
+        transition: all 0.5s ease-in-out;
+    }
+    @media (width <= 900px) {
+        aside {
+            border: none;
+            width: 0px;
+            overflow: hidden;
+            margin: 0px;
+            padding: 0px;
+        }
     }
 </style>
