@@ -16,8 +16,10 @@
     "@tauri-apps/api": "^2.8.0",
     "@tauri-apps/plugin-opener": "^2.5.0",
     "@tiptap/core": "^3.7.1",
+    "@tiptap/extension-text-align": "^3.7.2",
     "@tiptap/pm": "^3.7.1",
-    "@tiptap/starter-kit": "^3.7.1"
+    "@tiptap/starter-kit": "^3.7.1",
+    "svelte-tiptap": "^3.0.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-static": "^3.0.10",

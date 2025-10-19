@@ -20,7 +20,12 @@
 
 <time datetime={time.toISOString()} class="clock">
     <section>
-        <span>{hours % 12}</span>
+        {#if hours == 12}
+            <span>{hours}</span>
+        {:else}
+            <span>{hours % 12}</span>
+        {/if}
+        <!-- <span>{hours % 12}</span> -->
         <span class="blink">:</span>
         <span>
             {#if minutes < 10}

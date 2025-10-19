@@ -15,7 +15,7 @@
 
 <style>
     nav {
-        overflow: hidden;
+        /* overflow: hidden; */
         padding: 6px 10px 0px 10px;
         display: flex;
         flex-direction: column;

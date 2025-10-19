@@ -3,9 +3,9 @@
 
   let { children } = $props();
 
-  import LeftWindow from "../componets/LeftWindow.svelte";
-  import NavBanner from "../componets/NavBanner.svelte";
-  import RightWindow from "../componets/RightWindow.svelte";
+  import LeftWindow from "$lib/componets/LeftWindow.svelte";
+  import NavBanner from "$lib/componets/NavBanner.svelte";
+  import RightWindow from "$lib/componets/RightWindow.svelte";
 </script>
 
 <div class="window" data-tauri-drag-region>
@@ -39,6 +39,8 @@
   }
 
   main {
+    display: flex;
+    flex-direction: column;
     padding: 3px 13.5px 20px 13.5px;
     margin: 8px 0px;
     flex-grow: 1;
