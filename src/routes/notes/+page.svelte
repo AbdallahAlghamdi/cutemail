@@ -5,6 +5,7 @@
     import StarterKit from "@tiptap/starter-kit";
     import ToolBarButton from "$lib/componets/ToolBarButton.svelte";
     import TextAlign from "@tiptap/extension-text-align";
+    import { ListKit, TaskItem, TaskList } from "@tiptap/extension-list";
 
     let editor = $state() as Readable<Editor>;
 
@@ -15,6 +16,10 @@
                 StarterKit,
                 TextAlign.configure({
                     types: ["heading", "paragraph"],
+                }),
+                TaskList,
+                TaskItem.configure({
+                    nested: true,
                 }),
             ],
 
@@ -55,6 +60,27 @@
                     label="bold"
                     content="I"
                     content_active="/"
+                />
+                <ToolBarButton
+                    onclick={() =>
+                        $editor.chain().focus().toggleBulletList().run()}
+                    checked={$editor.isActive("bulletList")}
+                    label="bold"
+                    image="/icons/toolbar/bullet-list.png"
+                />
+                <ToolBarButton
+                    onclick={() =>
+                        $editor.chain().focus().toggleOrderedList().run()}
+                    checked={$editor.isActive("orderedList")}
+                    label="bold"
+                    image="/icons/toolbar/ordered-list.png"
+                />
+                <ToolBarButton
+                    onclick={() =>
+                        $editor.chain().focus().toggleTaskList().run()}
+                    checked={$editor.isActive("taskList")}
+                    label="bold"
+                    image="/icons/toolbar/checkbox-list.png"
                 />
             </section>
             <section>
@@ -174,12 +200,16 @@
         margin: 5px;
         margin-right: 15px;
     }
+    :global(input) {
+        display: inline;
+    }
     :global(.tiptap) {
         height: 100%;
         overflow: scroll;
         margin-left: 7px;
         margin-right: 8px;
         padding-left: 15px;
+        padding-top: 3px;
         border-style: solid;
         border-image: url("/srtoasty/notebook-paper.png") round;
         border-image-slice: 16 16 16 16 fill;

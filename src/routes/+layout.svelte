@@ -59,12 +59,18 @@
     font-weight: normal;
     font-style: normal;
   }
+  :global(ul ul, ul ol, ol ul, ol ol) {
+    padding-left: 15px;
+  }
+  :global(ol p, ul p) {
+    display: inline;
+  }
 
   :global(*, html, body) {
     box-sizing: border-box;
     overscroll-behavior: none;
     border-spacing: 0px;
-    list-style-type: none;
+    list-style-position: inside;
     font-family: "IBM-VGA";
     border: none;
     margin: 0px;
