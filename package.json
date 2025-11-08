@@ -17,9 +17,11 @@
     "@tauri-apps/plugin-opener": "^2.5.0",
     "@tiptap/core": "^3.7.1",
     "@tiptap/extension-list": "^3.7.2",
+    "@tiptap/extension-mathematics": "^3.10.1",
     "@tiptap/extension-text-align": "^3.7.2",
     "@tiptap/pm": "^3.7.1",
     "@tiptap/starter-kit": "^3.7.1",
+    "katex": "^0.16.25",
     "svelte-tiptap": "^3.0.0"
   },
   "devDependencies": {

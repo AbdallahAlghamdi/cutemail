@@ -27,6 +27,8 @@
   }
 
   .window {
+    cursor: url("icons/mayke_arth/cursor-01.png"), default;
+
     padding: 0px 8px;
     height: 100vh;
     background-position: center;
@@ -44,6 +46,7 @@
     padding: 3px 13.5px 20px 13.5px;
     margin: 8px 0px;
     flex-grow: 1;
+    overflow: hidden;
     /* background-color: red; */
     /* border: 3px #303843 solid; */
     border-image: url("/srtoasty/single-page-book.png");
@@ -65,8 +68,32 @@
   :global(ol p, ul p) {
     display: inline;
   }
+  :global(strong) {
+    font-weight: bold !important;
+  }
+  :global(img) {
+    width: calc(16px * 2);
+    display: block;
+  }
 
+  :global(.pixelCheckbox input[type="checkbox"]) {
+    cursor: url("icons/mayke_arth/cursor-06.png"), pointer;
+
+    appearance: none;
+    width: calc(16px * 1);
+    height: calc(16px * 1);
+    background-image: url("/icons/piiixl/ui/checkbox.png");
+    background-size: calc(16px * 1);
+  }
+  :global(.pixelCheckbox input[type="checkbox"]:checked) {
+    width: calc(16px * 1);
+    height: calc(16px * 1);
+    background-image: url("/icons/piiixl/ui/checkbox-active.png");
+    background-size: calc(16px * 1);
+  }
   :global(*, html, body) {
+    font-weight: inherit;
+    color: inherit;
     box-sizing: border-box;
     overscroll-behavior: none;
     border-spacing: 0px;
@@ -80,7 +107,18 @@
     font-smooth: grayscale;
     -webkit-font-smoothing: none;
     -moz-osx-font-smoothing: grayscale;
-    cursor: url("icons/mayke_arth/cursor-01.png"), default;
+  }
+  :global(.banner) {
+    border-style: solid;
+    border-image: url("/srtoasty/brown-banner.png");
+    border-image-slice: 4 4 4 4 fill;
+    border-image-width: calc(16px / 2);
+    padding: 16px;
+    margin: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
   }
   @media (width <= 900px) {
     .main_window {
