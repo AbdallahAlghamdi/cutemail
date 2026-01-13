@@ -1,1 +1,1 @@
-<p>news</p>
+news

@@ -1,0 +1,1 @@
+settings.png contains an icon from the artist: piiixl

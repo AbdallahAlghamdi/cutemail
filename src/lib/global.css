@@ -1,0 +1,70 @@
+@font-face {
+    font-family: "WEB_IBM";
+    src: url("fonts/Web437_IBM_CGA.woff");
+}
+@font-face {
+    font-family: "Plus_IBM";
+    src: url("fonts/WebPlus_IBM_CGA.woff");
+}
+*{
+    font-family: "Plus_IBM";
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    image-rendering: pixelated;
+    color: #303843
+
+}
+button{
+    margin: 0px;
+    border: none;
+}
+html, body {
+    height: 100%;
+
+}
+body{
+    display: flex;
+    padding: 8px;
+    overflow: hidden;
+}
+ input[type="checkbox"]{
+    cursor:  pointer;
+    appearance: none;
+    width: calc(16px * 1);
+    height: calc(16px * 1);
+    background-image: url("piiixl/icons/checkbox.png");
+    background-size: calc(16px * 1);
+}
+ input[type="checkbox"]:checked{
+     width: calc(16px * 1);
+    height: calc(16px * 1);
+    background-image: url("piiixl/icons/checkbox-checked.png");
+    background-size: calc(16px * 1);
+}
+.marquee {
+    overflow: hidden;
+    white-space: nowrap;
+    animation-name: marquee-animation;
+    animation-iteration-count: infinite;
+    animation-duration: 4s;
+    animation-timing-function: linear;
+    animation-direction: alternate;
+}
+@keyframes marquee-animation {
+    from{
+        transform: translateX(0%);
+    }
+    to{
+        transform: translateX(100%);
+    }
+}
+@keyframes scroll-bottom-left {
+    from{
+        background-position: 0 0;
+    }
+    to {
+        background-position: -32px 32px;
+    }
+   
+}
