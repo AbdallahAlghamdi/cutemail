@@ -19,7 +19,7 @@
     padding-top: 10px;
     padding-bottom: 15px;
     padding-right: 12px;
-    /* overflow: hidden; */
+    overflow: hidden;
     /* background-color: red; */
   }
   :global(body) {

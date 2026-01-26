@@ -42,6 +42,38 @@ body{
     background-image: url("piiixl/icons/checkbox-checked.png");
     background-size: calc(16px * 1);
 }
+.toolbar-button {
+    border-image: url("toolbar/button.png") 8 fill ;
+    border-image-width: 32px;
+    border-image-repeat:stretch;
+    padding: 10px;
+    padding-bottom: 12px;
+    box-sizing: content-box;
+}
+.toolbar-button:hover{
+    cursor: pointer;
+    border-image: url("toolbar/button-hover.png") 8 fill ;
+    border-image-width: 32px;
+    border-image-repeat:stretch;
+    padding: 10px;
+    padding-bottom: 12px;
+
+}
+.toolbar-button:active{
+    cursor: pointer;
+    border-image: url("toolbar/button-pressed.png") 8 fill ;
+    border-image-width: 32px;
+    border-image-repeat:stretch;
+    padding: 10px;
+    padding-bottom: 12px;
+
+}
+.toolbar-button:hover span{
+    top:1px;
+}
+.toolbar-button:active span{
+    top:2px;
+}
 .marquee {
     overflow: hidden;
     white-space: nowrap;
@@ -49,7 +81,7 @@ body{
     animation-iteration-count: infinite;
     animation-duration: 4s;
     animation-timing-function: linear;
-    animation-direction: alternate;
+    animation-direction:normal;
 }
 @keyframes marquee-animation {
     from{

@@ -4,7 +4,7 @@
 
 <div title={name}>
   <img src={avatar} alt="user avatar" />
-  <p class="marquee">♥{name}</p>
+  <p>♥{name}</p>
 </div>
 
 <style>
