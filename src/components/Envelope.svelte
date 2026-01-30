@@ -1,38 +1,76 @@
 <script lang="ts">
-    let { sender } = $props();
+    let { sender, title } = $props();
 </script>
 
 <section class="envelope">
     <div class="sender">
-        <section>
+        <address title={sender}>
             {sender}
-            <time>01-11-2011</time>
-        </section>
-        <img src="srtoasty/stamps/stamp-blue.png" alt="blue stamp" />
+        </address>
+        <time>2015-01-01, 12:02PM</time>
     </div>
+    <hr />
+    <h3 {title}>
+        {title}
+    </h3>
 </section>
 
 <style>
-    section {
+    hr {
+        border-style: solid;
+        border-color: #c79f79;
+    }
+    h3 {
+        height: 100%;
+
+        text-align: center;
+        font-size: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: normal;
+    }
+
+    .sender {
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 4px;
+    }
+    address::before {
+        content: "♠";
+        padding-right: 4px;
+    }
+    address {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-style: normal;
+        text-wrap: nowrap;
     }
     .envelope {
+        box-sizing: border-box;
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 2px #663931;
+        margin-bottom: -100px;
         position: relative;
-        top: 10px;
-        margin-top: 50px;
-        height: 250px;
-        width: 470px;
-        border-image: url("letter.png") 8 fill;
-        border-image-width: 18px;
-        border-image-repeat: repeat;
-    }
-    .sender {
-        padding: 8px;
+        top: 0px;
         display: flex;
-        gap: 8px;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: 14px;
+        padding: 14px;
+        height: 228px;
+        width: 480px;
+        border-image: url("letter.png") 8 fill;
+        border-image-width: 16px;
+        border-image-repeat: repeat;
+        transition: margin 0.6s;
+    }
+    .envelope:nth-child(even) {
+        right: 10px;
+    }
+    .envelope:nth-child(odd) {
+        left: 10px;
+    }
+    .envelope:hover {
+        margin-bottom: 10px;
     }
     img {
         width: calc(16px * 3);

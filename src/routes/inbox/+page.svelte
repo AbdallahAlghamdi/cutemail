@@ -9,19 +9,28 @@
   <!-- <button class="toolbar-button">Delete</button> -->
 </section>
 <section class="mailbox">
-  <Envelope sender="Gargemi" />
-  <Envelope sender="Gargemi" />
+  <img src="envelope.png" alt="" />
+  <Envelope title="Test test, Hello?" sender="Gargemi" />
+  <Envelope title="Test test, Hello?" sender="Gargemi" />
+  <Envelope title="Test test, Hello?" sender="Gargemi" />
+  <Envelope title="Test test, Hello?" sender="Gargemi" />
+  <!-- <Envelope sender="Gargemi" /> -->
 </section>
 
 <style>
+  img {
+    width: 480px;
+  }
   .toolbar {
-    height: 100px;
+    height: 50px;
   }
   .mailbox {
+    padding: 2px;
     flex-grow: 1;
+    /* background-color: red; */
+    align-items: center;
     display: flex;
     flex-direction: column;
-    background-color: red;
     overflow: scroll;
   }
   span {

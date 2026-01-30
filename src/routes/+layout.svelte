@@ -11,6 +11,8 @@
 
 <style>
   main {
+    display: flex;
+    flex-direction: column;
     flex-grow: 1;
     border-image: url("srtoasty/notebook.png") 16 fill repeat;
     border-style: solid;

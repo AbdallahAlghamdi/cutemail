@@ -47,7 +47,6 @@
   div {
     align-items: center;
     padding: 8px;
-    position: relative;
     display: flex;
     flex-direction: column;
     background-color: #fee1b8;
